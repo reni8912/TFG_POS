@@ -1,0 +1,23 @@
+#button-marina {
+    -fx-background-color: #1D3560;
+    -fx-background-radius: 4px;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+#top{-fx-background-image:url(top.png); -fx-background-size: cover;}
+
+#button-red{
+    -fx-background-color: #A32D2D;
+    -fx-background-radius: 4px;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+#combo{
+-fx-font-size:18px;
+}

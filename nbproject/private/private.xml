@@ -4,13 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/Styles/styles.css</file>
+            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/ServiceController.java</file>
+            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/main.java</file>
             <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/LoginFXML.fxml</file>
-            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/HubFXML.fxml</file>
-            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/HubController.java</file>
+            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/email.java</file>
             <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/img/fondo.png</file>
             <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/LoginController.java</file>
-            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/Main.java</file>
             <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/App.java</file>
+            <file>file:/C:/Users/software06/OneDrive%20-%20Imagar%20Informatica/Documentos/NetBeansProjects/POS/src/Code/EmailController.java</file>
         </group>
     </open-files>
 </project-private>

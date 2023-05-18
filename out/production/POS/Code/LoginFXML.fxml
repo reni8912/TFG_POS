@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@Styles/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Code.LoginController">
+    <children>
+        <Label fx:id="label" minHeight="16" minWidth="69" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+        <Text fill="#222675" layoutX="36.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MasterBill" textAlignment="CENTER" wrappingWidth="167.0">
+            <font>
+                <Font name="Maiandra GD" size="38.0" />
+            </font>
+         <effect>
+            <Blend />
+         </effect>
+        </Text>
+        <ImageView fitHeight="720.0" fitWidth="600.0" layoutX="684.0" pickOnBounds="true" smooth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="C:\Users\software06\OneDrive - Imagar Informatica\Documentos\NetBeansProjects\POS\src\img\fondo.png" />
+            </image>
+        </ImageView>
+        <Text layoutX="69.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" wrappingWidth="268.0">
+            <font>
+                <Font size="32.0" />
+            </font>
+        </Text>
+<PasswordField fx:id="contraseñaL" layoutX="278.0" layoutY="315.0" prefHeight="43.0" prefWidth="328.0" promptText="Ingresa tu contraseña">
+         <font>
+            <Font size="20.0" />
+         </font></PasswordField>
+        <Button id="button-marina" fx:id="login" layoutX="69.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleButtonAction" onMouseClicked="#handleButtonAction" prefHeight="73.0" prefWidth="536.0" stylesheets="@Styles/styles.css" text="Login" />
+        <TextField fx:id="correoL" layoutX="278.0" layoutY="145.0" prefHeight="43.0" prefWidth="328.0" promptText="Ingresa tu Email">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+      <Text layoutX="69.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" wrappingWidth="167.0">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

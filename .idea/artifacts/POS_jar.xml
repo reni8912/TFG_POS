@@ -1,0 +1,101 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="POS:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/POS_jar</output-path>
+    <root id="archive" name="POS.jar">
+      <element id="module-output" name="POS" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (3)/httpcore-4.4.16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (2)/jna-4.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (3)/commons-logging-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (3)/commons-codec-1.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (2)/argon2-jvm-2.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jar_files (3)/httpclient-4.5.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/adapter-rxjava2-2.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/api-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/converter-jackson-2.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/core-3.5.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/client-0.12.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jackson-annotations-2.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jackson-core-2.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javase-3.5.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javax.mail.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jai-imageio-core-1.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jackson-databind-2.10.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/javax.activation-1.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jcommander-1.82.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/json-20230227.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/okhttp-3.14.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/retrofit-2.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/rxjava-2.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/reactive-streams-1.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/okio-1.17.2.jar" path-in-jar="/" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-namedpipe-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-file-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-debug-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-heap-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-console-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-handle-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-interlocked-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-file-l1-2-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-file-l2-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-memory-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-localization-l1-2-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-datetime-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-libraryloader-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-console-l1-2-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-errorhandling-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-processenvironment-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-processthreads-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-processthreads-l1-1-1.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-profile-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-rtlsupport-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-string-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-synch-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-synch-l1-2-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-sysinfo-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-timezone-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-core-util-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-conio-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-convert-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-environment-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-filesystem-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-heap-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-locale-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-math-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-multibyte-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-private-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-process-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-runtime-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-stdio-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-string-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-time-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/api-ms-win-crt-utility-l1-1-0.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/fxplugins.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/glib-lite.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/javafx_font.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/glass.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/decora_sse.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/gstreamer-lite.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/jfxmedia.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/jfxwebkit.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/msvcp140.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/javafx_iio.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/msvcp140_1.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/msvcp140_2.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/prism_common.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/prism_d3d.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/prism_sw.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/ucrtbase.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/vcruntime140.dll" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/javafx-sdk-19.0.2/bin/vcruntime140_1.dll" />
+    </root>
+  </artifact>
+</component>

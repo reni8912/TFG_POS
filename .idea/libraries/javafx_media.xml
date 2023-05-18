@@ -1,0 +1,42 @@
+<component name="libraryTable">
+  <library name="javafx.media">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.media.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (3)/httpcore-4.4.16.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (2)/jna-4.5.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.graphics.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (3)/commons-logging-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (3)/commons-codec-1.11.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (2)/argon2-jvm-2.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files (3)/httpclient-4.5.14.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.web.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.controls.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.swing.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.fxml.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx.base.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javafx-sdk-19.0.2/lib/javafx-swt.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.0.33/mysql-connector-j-8.0.33.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/adapter-rxjava2-2.9.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/api-0.12.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/converter-jackson-2.9.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/core-3.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/client-0.12.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jackson-annotations-2.9.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jackson-core-2.10.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javase-3.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javax.mail.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jai-imageio-core-1.4.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jackson-databind-2.10.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/javax.activation-1.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jcommander-1.82.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/json-20230227.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/okhttp-3.14.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/retrofit-2.9.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/rxjava-2.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/reactive-streams-1.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/okio-1.17.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
