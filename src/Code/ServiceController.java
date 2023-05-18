@@ -92,7 +92,7 @@ public class ServiceController implements Initializable {
             statement.setFloat(2, newPrice);
             statement.setString(3, serviceName);
             statement.executeUpdate();
-            
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
             Parent root = loader.load();
             ServiceController serviceController = loader.getController();
@@ -222,7 +222,9 @@ public class ServiceController implements Initializable {
         }
 
         choser.setItems(FXCollections.observableArrayList(userNames));
-        choser.setValue(userNames.get(0));
+        if (!userNames.isEmpty()) {
+            choser.setValue(userNames.get(0));
+        }
     }
 
     @Override
@@ -250,6 +252,10 @@ public class ServiceController implements Initializable {
                         String name2 = rs.getString("name");
                         money.setText(Float.toString(price));
                         name.setText(name2);
+                    } else {
+                        // No se encontraron valores en la base de datos
+                        money.setText("");
+                        name.setText("");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

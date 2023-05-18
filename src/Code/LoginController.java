@@ -32,6 +32,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.sql.PreparedStatement;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 
 
 public class LoginController implements Initializable {
@@ -55,6 +57,7 @@ public class LoginController implements Initializable {
     private static final String pass = "1234";
     private static final String urll = "jdbc:mysql://localhost:3306/pos";
     private java.sql.Connection con;
+    Argon2 argon2 = Argon2Factory.create();
     
 @FXML
 private void handleButtonAction(ActionEvent event) throws IOException {
@@ -67,7 +70,7 @@ private void handleButtonAction(ActionEvent event) throws IOException {
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             String contraseñaBD = rs.getString("password");
-            if (contraseña.equals(contraseñaBD)) {
+            if (argon2.verify(contraseñaBD, contraseña)) {
                 // La contraseña es correcta, por lo que se carga la interfaz de usuario del Hub
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HubFXML.fxml"));
                 Parent root = loader.load();
