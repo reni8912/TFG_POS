@@ -32,10 +32,20 @@
       </TextField>
       <Button id="button-marina" fx:id="qr" layoutX="99.0" layoutY="502.0" mnemonicParsing="false" onAction="#qr" onMouseClicked="#qr" prefHeight="73.0" prefWidth="284.0" stylesheets="@Styles/styles.css" text="QR" />
       <Button id="button-marina" fx:id="create" layoutX="491.0" layoutY="502.0" mnemonicParsing="false" onAction="#create" onMouseClicked="#create" prefHeight="73.0" prefWidth="284.0" stylesheets="@Styles/styles.css" text="Tarifas" />
-      <Button id="button-marina" fx:id="seo" layoutX="876.0" layoutY="502.0" maxHeight="200.0" maxWidth="500.0" minHeight="73.0" minWidth="284.0" mnemonicParsing="false" onAction="#seo" onMouseClicked="#seo" prefHeight="73.0" prefWidth="284.0" stylesheets="@Styles/styles.css" text="Clientes" />
+      <Button id="button-marina" fx:id="seo" layoutX="876.0" layoutY="502.0" maxHeight="200.0" maxWidth="500.0" minHeight="73.0" minWidth="284.0" mnemonicParsing="false" onAction="#seo" onMouseClicked="#seo" prefHeight="73.0" prefWidth="284.0" stylesheets="@Styles/styles.css" text="Mailing" />
       <Text fill="#222675" layoutX="85.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la Tarifa:" wrappingWidth="313.0">
          <font>
             <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="876.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio ">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="1199.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+         <font>
+            <Font size="25.0" />
          </font>
       </Text>
    </children>

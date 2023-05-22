@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -78,42 +82,72 @@ public class ServiceController implements Initializable {
     private static final String pass = "1234";
     private static final String urll = "jdbc:mysql://localhost:3306/pos";
     private java.sql.Connection con;
+    
+  boolean error = false;
 
-    @FXML
-    void save(ActionEvent event) throws IOException {
-        String serviceName = choser.getValue();
-        String newName = name.getText();
-        float newPrice = Float.parseFloat(money.getText());
+@FXML
+void save(ActionEvent event) {
+    String serviceName = choser.getValue();
+    String newName = name.getText();
+    float newPrice;
 
-        try {
-            String query = "UPDATE service SET name = ?, price = ? WHERE name = ?";
-            PreparedStatement statement = con.prepareStatement(query);
-            statement.setString(1, newName);
-            statement.setFloat(2, newPrice);
-            statement.setString(3, serviceName);
-            statement.executeUpdate();
+    try {
+        newPrice = Float.parseFloat(money.getText());
+    } catch (NumberFormatException e) {
+        error = true;
+        showAlert(AlertType.ERROR, "Error de formato", "El precio ingresado no es válido.");
+        return;
+    }
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
-            Parent root = loader.load();
-            ServiceController serviceController = loader.getController();
-            serviceController.setEmail(email);
-            serviceController.loadData();
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            stage.setFullScreen(false);
-            stage.setResizable(false);
-            stage.setWidth(1280);
-            stage.setHeight(720);
-            stage.show();
+    try {
+        String query = "UPDATE service SET name = ?, price = ? WHERE name = ?";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setString(1, newName);
+        statement.setFloat(2, newPrice);
+        statement.setString(3, serviceName);
+        statement.executeUpdate();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
+        Parent root = loader.load();
+        ServiceController serviceController = loader.getController();
+        serviceController.setEmail(email);
+        serviceController.loadData();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+        stage.setFullScreen(false);
+        stage.setResizable(false);
+        stage.setWidth(1280);
+        stage.setHeight(720);
+        stage.show();
 
+        showAlert(AlertType.INFORMATION, "Guardado exitoso", "El servicio se ha guardado correctamente.");
+
+    } catch (SQLException e) {
+        error = true;
+        showAlert(AlertType.ERROR, "Error al guardar", "Se ha producido un error al guardar el servicio.");
+    } catch (IOException ex) {
+        error = true;
+        showAlert(AlertType.ERROR, "Error al guardar", "Se ha producido un error al guardar el servicio.");
+    } finally {
+        if (error) {
+            showAlert(AlertType.ERROR, "Error al guardar", "Se ha producido un error al guardar el servicio.");
         }
     }
+}
+
+
+
+
+private void showAlert(AlertType alertType, String title, String message) {
+    Alert alert = new Alert(alertType);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
 
     @FXML
     void delete(ActionEvent event) throws IOException {
@@ -142,50 +176,68 @@ public class ServiceController implements Initializable {
             stage.show();
 
             choser.getItems().remove(serviceName);
+            
+                     showAlert(AlertType.INFORMATION, "Borrado exitoso", "El servicio se ha borrado correctamente.");
+
 
         } catch (SQLException e) {
             e.printStackTrace();
+            
+  showAlert(AlertType.INFORMATION, "Error al borrar", "Se ha proucido un error al borrar el servicio.");
+
 
         }
     }
 
-    @FXML
-    void create(ActionEvent event) throws IOException {
-        String name = C_name.getText();
-        float price = Float.parseFloat(C_price.getText());
+   @FXML
+void create(ActionEvent event) {
+    String name = C_name.getText();
+    float price;
 
-        try {
-
-            int userId = getUserIdByEmail(email);
-
-            String query = "INSERT INTO service (name, price, user_s_id) VALUES (?, ?, ?)";
-            PreparedStatement statement = con.prepareStatement(query);
-            statement.setString(1, name);
-            statement.setFloat(2, price);
-            statement.setInt(3, userId);
-            statement.executeUpdate();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
-            Parent root = loader.load();
-            ServiceController serviceController = loader.getController();
-            serviceController.setEmail(email);
-            serviceController.loadData();
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            stage.setFullScreen(false);
-            stage.setResizable(false);
-            stage.setWidth(1280);
-            stage.setHeight(720);
-            stage.show();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
+    try {
+        price = Float.parseFloat(C_price.getText());
+    } catch (NumberFormatException e) {
+        showAlert(AlertType.ERROR, "Error de formato", "El precio ingresado no es válido.");
+        return; // Salir del método para evitar la ejecución del código restante
     }
+
+    try {
+        int userId = getUserIdByEmail(email);
+
+        String query = "INSERT INTO service (name, price, user_s_id) VALUES (?, ?, ?)";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setString(1, name);
+        statement.setFloat(2, price);
+        statement.setInt(3, userId);
+        statement.executeUpdate();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
+        Parent root = loader.load();
+        ServiceController serviceController = loader.getController();
+        serviceController.setEmail(email);
+        serviceController.loadData();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+        stage.setFullScreen(false);
+        stage.setResizable(false);
+        stage.setWidth(1280);
+        stage.setHeight(720);
+        stage.show();
+
+        showAlert(AlertType.INFORMATION, "Creado exitosamente", "El servicio se ha creado correctamente.");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        showAlert(AlertType.ERROR, "Error al crear", "Se ha producido un error al crear el servicio.");
+    } catch (IOException ex) {
+        ex.printStackTrace();
+        showAlert(AlertType.ERROR, "Error al crear", "Se ha producido un error al crear el servicio.");
+    }
+}
+
 
     @FXML
     void back(ActionEvent event) throws IOException {

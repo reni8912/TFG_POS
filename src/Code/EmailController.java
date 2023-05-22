@@ -86,6 +86,14 @@ public class EmailController implements Initializable {
         }
     };
 
+    private void showAlert(AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
     void back(ActionEvent event) throws IOException {
 
@@ -111,11 +119,13 @@ public class EmailController implements Initializable {
     void EnvTodos(ActionEvent event) throws AddressException {
 
         String premises = "";
+        String type = "";
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT premises_name from user_s where email = '" + email + "'");
+            ResultSet rs = stmt.executeQuery("SELECT premises_name ,type  from user_s where email = '" + email + "'");
             if (rs.next()) {
                 premises = rs.getString("premises_name");
+                type = rs.getString("type");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -140,7 +150,7 @@ public class EmailController implements Initializable {
 
         CompletionRequest request = CompletionRequest.builder()
                 .model("text-davinci-003")
-                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento es " + premises)
+                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + " no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type)
                 .maxTokens(1000)
                 .build();
 
@@ -166,10 +176,13 @@ public class EmailController implements Initializable {
             mensaje.setText(choiceText);
 
             Transport.send(mensaje);
+            showAlert(AlertType.INFORMATION, "Envio exitoso", "El correo se ha enviado correctamente.");
 
             System.out.println("Correo enviado exitosamente.");
         } catch (MessagingException e) {
             e.printStackTrace();
+            showAlert(AlertType.ERROR, "Error al enviar el correo", "Se ha producido un error al enviar el correo.");
+
         }
 
     }
@@ -178,11 +191,24 @@ public class EmailController implements Initializable {
     void EnvUno(ActionEvent event) {
 
         String premises = "";
+        String type = "";
+        String name = "";
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT premises_name from user_s where email = '" + email + "'");
+            ResultSet rs = stmt.executeQuery("SELECT premises_name ,type  from user_s where email = '" + email + "'");
             if (rs.next()) {
                 premises = rs.getString("premises_name");
+                type = rs.getString("type");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+          try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT name  from user_b where email = '" + choser.getValue() + "'");
+            if (rs.next()) {
+                name = rs.getString("name");
+             
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -192,7 +218,7 @@ public class EmailController implements Initializable {
 
         CompletionRequest request = CompletionRequest.builder()
                 .model("text-davinci-003")
-                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento es " + premises)
+                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + ", no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type + ". Esto debe de ser en formato correo electronico, y a la persona a la que te debes dirigir se llama "+ name )
                 .maxTokens(1000)
                 .build();
 
@@ -215,9 +241,11 @@ public class EmailController implements Initializable {
             mensaje.setText(choiceText);
 
             Transport.send(mensaje);
+            showAlert(AlertType.INFORMATION, "Envio exitoso", "El correo se ha enviado correctamente.");
 
             System.out.println("Correo enviado exitosamente.");
-       } catch (MessagingException e) {
+        } catch (MessagingException e) {
+            showAlert(AlertType.ERROR, "Error al enviar el correo", "Se ha producido un error al enviar el correo.");
             e.printStackTrace();
         }
 

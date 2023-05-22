@@ -13,7 +13,7 @@ import com.theokanning.openai.OpenAiService;
 import com.theokanning.openai.completion.CompletionRequest;
 
 
-public class email {
+public class Helper {
     
     public static void main(String[] args) {
         

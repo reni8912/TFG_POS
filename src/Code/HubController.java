@@ -130,51 +130,66 @@ public class HubController implements Initializable {
 
     }
 
-    @FXML
-    public void qr(ActionEvent event) {
-        try {
-            String qrContent = "https://1204-77-231-169-162.ngrok-free.app/createInvoice/" + email.replaceAll("\\.", "7b6X") + "/" + money.getText().replaceAll("\\.", "7b6X") + "/" + choser.getValue().replaceAll("\\.", "7b6X");
+  @FXML
+public void qr(ActionEvent event) {
+    try {
+        String moneyText = money.getText();
+        float price = Float.parseFloat(moneyText);
 
-            System.out.println(qrContent);
-            int qrWidth = 300;
-            int qrHeight = 300;
+        String qrContent = "https://671f-77-231-169-162.ngrok-free.app/createInvoice/" + email.replaceAll("\\.", "7b6X") + "/" + moneyText.replaceAll("\\.", "7b6X") + "/" + choser.getValue().replaceAll("\\.", "7b6X");
 
-            BufferedImage qrImage = generateQRCode(qrContent, qrWidth, qrHeight);
+        System.out.println(qrContent);
+        int qrWidth = 300;
+        int qrHeight = 300;
 
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ImageIO.write(qrImage, "png", byteArrayOutputStream);
-            byteArrayOutputStream.flush();
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+        BufferedImage qrImage = generateQRCode(qrContent, qrWidth, qrHeight);
 
-            ImageView qrImageView = new ImageView(new Image(byteArrayInputStream));
-            qrImageView.setFitWidth(qrWidth);
-            qrImageView.setFitHeight(qrHeight);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(qrImage, "png", byteArrayOutputStream);
+        byteArrayOutputStream.flush();
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
 
-            Stage qrStage = new Stage();
-            qrStage.setTitle("Código QR");
-            qrStage.initModality(Modality.APPLICATION_MODAL);
+        ImageView qrImageView = new ImageView(new Image(byteArrayInputStream));
+        qrImageView.setFitWidth(qrWidth);
+        qrImageView.setFitHeight(qrHeight);
 
-            VBox qrLayout = new VBox();
-            qrLayout.setAlignment(Pos.CENTER);
-            qrLayout.setSpacing(10);
-            qrLayout.getChildren().add(qrImageView);
+        Stage qrStage = new Stage();
+        qrStage.setTitle("Código QR");
+        qrStage.initModality(Modality.APPLICATION_MODAL);
 
-            Scene qrScene = new Scene(qrLayout);
-            qrStage.setScene(qrScene);
+        VBox qrLayout = new VBox();
+        qrLayout.setAlignment(Pos.CENTER);
+        qrLayout.setSpacing(10);
+        qrLayout.getChildren().add(qrImageView);
 
-            qrStage.setMinWidth(qrWidth + 40);
-            qrStage.setMinHeight(qrHeight + 80);
+        Scene qrScene = new Scene(qrLayout);
+        qrStage.setScene(qrScene);
 
-            qrStage.showAndWait();
+        qrStage.setMinWidth(qrWidth + 40);
+        qrStage.setMinHeight(qrHeight + 80);
 
-        } catch (WriterException | IOException e) {
-            e.printStackTrace();
-        }
+        qrStage.showAndWait();
+
+    } catch (NumberFormatException e) {
+        e.printStackTrace();
+        showAlert(AlertType.ERROR, "Error en el campo de dinero", "Ingrese un valor numérico válido en el campo de dinero.");
+    } catch (WriterException | IOException e) {
+        e.printStackTrace();
+        showAlert(AlertType.ERROR, "Error al generar el código QR", "Se ha producido un error al generar el código QR.");
     }
+}
+
+private void showAlert(AlertType alertType, String title, String message) {
+    Alert alert = new Alert(alertType);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+}
 
     @FXML
     void seo(ActionEvent event) throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EmailFXML.fxml"));
         Parent root = loader.load();
         EmailController emailController = loader.getController();
@@ -198,28 +213,28 @@ public class HubController implements Initializable {
 
     }
 
-   public void loadData() {
-    List<String> userNames = new ArrayList<>();
-    try {
-        Statement stmt = con.createStatement();
-        System.out.println(email);
-        ResultSet rs = stmt.executeQuery("SELECT service.name FROM service JOIN user_s ON user_s.id = service.user_s_id WHERE user_s.email = '" + email + "'");
-        while (rs.next()) {
-            userNames.add(rs.getString("service.name"));
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-       
-    }
+    public void loadData() {
+        List<String> userNames = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            System.out.println(email);
+            ResultSet rs = stmt.executeQuery("SELECT service.name FROM service JOIN user_s ON user_s.id = service.user_s_id WHERE user_s.email = '" + email + "'");
+            while (rs.next()) {
+                userNames.add(rs.getString("service.name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
 
-    choser.setItems(FXCollections.observableArrayList(userNames));
-    if (!userNames.isEmpty()) {
-        choser.setValue(userNames.get(0));
-    } else {
-      
-        choser.setValue(null);
+        }
+
+        choser.setItems(FXCollections.observableArrayList(userNames));
+        if (!userNames.isEmpty()) {
+            choser.setValue(userNames.get(0));
+        } else {
+
+            choser.setValue(null);
+        }
     }
-}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -245,8 +260,8 @@ public class HubController implements Initializable {
                         float price = rs.getFloat("price");
                         money.setText(Float.toString(price));
                     } else {
-               
-                        money.setText("");  
+
+                        money.setText("");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
