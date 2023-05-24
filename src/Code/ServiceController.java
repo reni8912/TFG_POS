@@ -27,9 +27,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
+import java.util.Optional;
+
 
 public class ServiceController implements Initializable {
 
@@ -149,10 +152,18 @@ private void showAlert(AlertType alertType, String title, String message) {
     alert.showAndWait();
 }
 
-    @FXML
-    void delete(ActionEvent event) throws IOException {
-        String serviceName = choser.getValue();
+  @FXML
+void delete(ActionEvent event) throws IOException {
+    String serviceName = choser.getValue();
 
+    // Mostrar una alerta de confirmación
+    Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+    confirmationAlert.setTitle("Confirmación de eliminación");
+    confirmationAlert.setHeaderText(null);
+    confirmationAlert.setContentText("¿Estás seguro de borrar esta tarifa?");
+
+    Optional<ButtonType> result = confirmationAlert.showAndWait();
+    if (result.isPresent() && result.get() == ButtonType.OK) {
         try {
             String query = "DELETE FROM service WHERE name = ?";
             PreparedStatement statement = con.prepareStatement(query);
@@ -176,19 +187,14 @@ private void showAlert(AlertType alertType, String title, String message) {
             stage.show();
 
             choser.getItems().remove(serviceName);
-            
-                     showAlert(AlertType.INFORMATION, "Borrado exitoso", "El servicio se ha borrado correctamente.");
 
-
+            showAlert(Alert.AlertType.INFORMATION, "Borrado exitoso", "El servicio se ha borrado correctamente.");
         } catch (SQLException e) {
             e.printStackTrace();
-            
-  showAlert(AlertType.INFORMATION, "Error al borrar", "Se ha proucido un error al borrar el servicio.");
-
-
+            showAlert(Alert.AlertType.ERROR, "Error al borrar", "Se ha producido un error al borrar el servicio.");
         }
     }
-
+}
    @FXML
 void create(ActionEvent event) {
     String name = C_name.getText();

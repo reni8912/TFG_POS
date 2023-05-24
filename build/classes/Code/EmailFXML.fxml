@@ -15,7 +15,7 @@
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@Styles/styles.css">
          <children>
             <Label fx:id="label" minHeight="16" minWidth="69" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
-            <Pane id="top" prefHeight="278.0" prefWidth="1280.0" stylesheets="@Styles/styles.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane id="top" layoutX="-14.0" layoutY="-12.0" prefHeight="278.0" prefWidth="1296.0" stylesheets="@Styles/styles.css" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-12.0">
                <children>
                   <Text fill="#222675" layoutX="97.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MasterBill" textAlignment="CENTER" wrappingWidth="208.0">
                      <font>
