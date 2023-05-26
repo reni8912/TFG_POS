@@ -61,6 +61,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
+import javafx.scene.control.CheckBox;
 
 /**
  * FXML Controller class
@@ -74,7 +75,10 @@ public class HubController implements Initializable {
 
     @FXML
     private Button create;
-
+    
+    @FXML
+    private CheckBox admin;
+    
     private String email;
 
     public void setEmail(String email) {
@@ -121,6 +125,100 @@ public class HubController implements Initializable {
     private java.sql.Connection con;
     Argon2 argon2 = Argon2Factory.create();
 
+    @FXML
+public void mode(ActionEvent event) throws IOException {
+
+    if(admin.isSelected() == true){
+    Dialog<Pair<String, String>> dialog = new Dialog<>();
+    dialog.setTitle("Verificar Usuario");
+    dialog.setHeaderText(null);
+
+    // Establecer los botones de aceptar y cancelar
+    ButtonType loginButtonType = new ButtonType("Acceder", ButtonBar.ButtonData.OK_DONE);
+    dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+    // Crear los campos de entrada
+    GridPane grid = new GridPane();
+    grid.setHgap(10);
+    grid.setVgap(10);
+
+    TextField emailField = new TextField();
+    emailField.setPromptText("Correo electrónico");
+    PasswordField passwordField = new PasswordField();
+    passwordField.setPromptText("Contraseña");
+
+    grid.add(new Label("Correo:"), 0, 0);
+    grid.add(emailField, 1, 0);
+    grid.add(new Label("Contraseña:"), 0, 1);
+    grid.add(passwordField, 1, 1);
+
+    // Habilitar o deshabilitar el botón de inicio de sesión según los campos de entrada
+    Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+    loginButton.setDisable(true);
+
+    emailField.textProperty().addListener((observable, oldValue, newValue) -> {
+        loginButton.setDisable(newValue.trim().isEmpty() || passwordField.getText().isEmpty());
+    });
+
+    passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
+        loginButton.setDisable(newValue.trim().isEmpty() || emailField.getText().isEmpty());
+    });
+
+    dialog.getDialogPane().setContent(grid);
+
+    // Convertir el resultado del cuadro de diálogo a un par de correo y contraseña
+    dialog.setResultConverter(dialogButton -> {
+        if (dialogButton == loginButtonType) {
+            return new Pair<>(emailField.getText(), passwordField.getText());
+        }
+        return null;
+    });
+
+    Optional<Pair<String, String>> result = dialog.showAndWait();
+
+    result.ifPresent(credentials -> {
+        try {
+            String em = credentials.getKey();
+            String pa = credentials.getValue();
+
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM user_s WHERE email = ?");
+            ps.setString(1, em);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                if (argon2.verify(hashedPassword, pa)) { 
+
+                        seo.setVisible(true);
+                        create.setVisible(true);
+                
+                } else {
+                   admin.setSelected(false);
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Credenciales incorrectas. Inténtalo de nuevo.");
+                    alert.showAndWait();
+                }
+            } else {
+                admin.setSelected(false);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("El correo no está registrado.");
+                alert.showAndWait();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            admin.setSelected(false);
+        }
+    });}else{
+    
+        seo.setVisible(false);
+        create.setVisible(false);
+     
+    }
+}
+    
 @FXML
 public void create(ActionEvent event) throws IOException {
     // Crear el cuadro de diálogo
@@ -415,6 +513,7 @@ public void create(ActionEvent event) throws IOException {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         con = null;
+        admin.setSelected(true);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(urll, user, pass);

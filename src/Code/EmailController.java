@@ -150,7 +150,7 @@ public class EmailController implements Initializable {
 
         CompletionRequest request = CompletionRequest.builder()
                 .model("text-davinci-003")
-                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + " no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type)
+                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + ", no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type)
                 .maxTokens(1000)
                 .build();
 
@@ -215,10 +215,12 @@ public class EmailController implements Initializable {
         }
 
         OpenAiService service = new OpenAiService(API_KEY);
-
+        
+        String prompt = textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + ", no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type + ". Esto debe de ser en formato correo electronico, y a la persona a la que te debes dirigir se llama "+ name ;
+        
         CompletionRequest request = CompletionRequest.builder()
                 .model("text-davinci-003")
-                .prompt(textArea.getText() + ". No te inventes informacion extra ni ningún dato, pero hazlo de la forma en la cual mejore la efectividad de la comunicación y maximizar la rentabilidad. El nombre del establecimiento se llama " + premises + ", no te inventes su nombre ni lo complementes. El tipo de servicio es de " + type + ". Esto debe de ser en formato correo electronico, y a la persona a la que te debes dirigir se llama "+ name )
+                .prompt(prompt)
                 .maxTokens(1000)
                 .build();
 
