@@ -68,6 +68,7 @@ import javafx.scene.control.CheckBox;
  *
  * @author Jorge
  */
+
 public class HubController implements Initializable {
 
     @FXML
@@ -126,7 +127,7 @@ public class HubController implements Initializable {
     Argon2 argon2 = Argon2Factory.create();
 
     @FXML
-public void mode(ActionEvent event) throws IOException {
+    public void mode(ActionEvent event) throws IOException {
 
     if(admin.isSelected() == true){
     Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -219,70 +220,9 @@ public void mode(ActionEvent event) throws IOException {
     }
 }
     
-@FXML
-public void create(ActionEvent event) throws IOException {
-    // Crear el cuadro de diálogo
-    Dialog<Pair<String, String>> dialog = new Dialog<>();
-    dialog.setTitle("Verificar Usuario");
-    dialog.setHeaderText(null);
-
-    // Establecer los botones de aceptar y cancelar
-    ButtonType loginButtonType = new ButtonType("Acceder", ButtonBar.ButtonData.OK_DONE);
-    dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
-    // Crear los campos de entrada
-    GridPane grid = new GridPane();
-    grid.setHgap(10);
-    grid.setVgap(10);
-
-    TextField emailField = new TextField();
-    emailField.setPromptText("Correo electrónico");
-    PasswordField passwordField = new PasswordField();
-    passwordField.setPromptText("Contraseña");
-
-    grid.add(new Label("Correo:"), 0, 0);
-    grid.add(emailField, 1, 0);
-    grid.add(new Label("Contraseña:"), 0, 1);
-    grid.add(passwordField, 1, 1);
-
-    // Habilitar o deshabilitar el botón de inicio de sesión según los campos de entrada
-    Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
-    loginButton.setDisable(true);
-
-    emailField.textProperty().addListener((observable, oldValue, newValue) -> {
-        loginButton.setDisable(newValue.trim().isEmpty() || passwordField.getText().isEmpty());
-    });
-
-    passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
-        loginButton.setDisable(newValue.trim().isEmpty() || emailField.getText().isEmpty());
-    });
-
-    dialog.getDialogPane().setContent(grid);
-
-    // Convertir el resultado del cuadro de diálogo a un par de correo y contraseña
-    dialog.setResultConverter(dialogButton -> {
-        if (dialogButton == loginButtonType) {
-            return new Pair<>(emailField.getText(), passwordField.getText());
-        }
-        return null;
-    });
-
-    // Mostrar el cuadro de diálogo y esperar a que el usuario ingrese los datos
-    Optional<Pair<String, String>> result = dialog.showAndWait();
-
-    result.ifPresent(credentials -> {
-        try {
-            String em = credentials.getKey();
-            String pa = credentials.getValue();
-
-            // Verificar las credenciales ingresadas en la base de datos
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM user_s WHERE email = ?");
-            ps.setString(1, em);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                String hashedPassword = rs.getString("password");
-                if (argon2.verify(hashedPassword, pa)) {
-                    // Cargar el nuevo FXML y mostrarlo en una nueva ventana
+    @FXML
+    public void create(ActionEvent event) throws IOException {
+   
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
                     Parent root = loader.load();
                     ServiceController serviceController = loader.getController();
@@ -298,26 +238,7 @@ public void create(ActionEvent event) throws IOException {
                     stage.setWidth(1280);
                     stage.setHeight(720);
                     stage.show();
-                } else {
-                    // Mostrar un mensaje de error si las credenciales son incorrectas
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Credenciales incorrectas. Inténtalo de nuevo.");
-                    alert.showAndWait();
-                }
-            } else {
-                // Mostrar un mensaje de error si el correo no se encuentra en la base de datos
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("El correo no está registrado.");
-                alert.showAndWait();
-            }
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-        }
-    });
+            
 }
 
     @FXML
@@ -383,68 +304,7 @@ public void create(ActionEvent event) throws IOException {
     
     @FXML
     void seo(ActionEvent event) throws IOException {
-        // Crear el cuadro de diálogo
-        Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Verificar Usuario");
-        dialog.setHeaderText(null);
-
-        // Establecer los botones de aceptar y cancelar
-        ButtonType loginButtonType = new ButtonType("Acceder", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
-        // Crear los campos de entrada
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-
-        TextField emailField = new TextField();
-        emailField.setPromptText("Correo electrónico");
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("Contraseña");
-
-        grid.add(new Label("Correo:"), 0, 0);
-        grid.add(emailField, 1, 0);
-        grid.add(new Label("Contraseña:"), 0, 1);
-        grid.add(passwordField, 1, 1);
-
-        // Habilitar o deshabilitar el botón de inicio de sesión según los campos de entrada
-        Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
-        loginButton.setDisable(true);
-
-        emailField.textProperty().addListener((observable, oldValue, newValue) -> {
-            loginButton.setDisable(newValue.trim().isEmpty() || passwordField.getText().isEmpty());
-        });
-
-        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
-            loginButton.setDisable(newValue.trim().isEmpty() || emailField.getText().isEmpty());
-        });
-
-        dialog.getDialogPane().setContent(grid);
-
-        // Convertir el resultado del cuadro de diálogo a un par de correo y contraseña
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == loginButtonType) {
-                return new Pair<>(emailField.getText(), passwordField.getText());
-            }
-            return null;
-        });
-
-        // Mostrar el cuadro de diálogo y esperar a que el usuario ingrese los datos
-        Optional<Pair<String, String>> result = dialog.showAndWait();
-
-        result.ifPresent(credentials -> {
-            try {
-                String em = credentials.getKey();
-                String pa = credentials.getValue();
-
-                // Verificar las credenciales ingresadas en la base de datos
-                PreparedStatement ps = con.prepareStatement("SELECT * FROM user_s WHERE email = ?");
-                ps.setString(1, em);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    String hashedPassword = rs.getString("password");
-                    if (argon2.verify(hashedPassword, pa)) {
-                        // Cargar el nuevo FXML y mostrarlo en una nueva ventana
+    
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("EmailFXML.fxml"));
                         Parent root = loader.load();
                         EmailController emailController = loader.getController();
@@ -460,26 +320,7 @@ public void create(ActionEvent event) throws IOException {
                         stage.setWidth(1280);
                         stage.setHeight(720);
                         stage.show();
-                    } else {
-                        // Mostrar un mensaje de error si las credenciales son incorrectas
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Error");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Credenciales incorrectas. Inténtalo de nuevo.");
-                        alert.showAndWait();
-                    }
-                } else {
-                    // Mostrar un mensaje de error si el correo no se encuentra en la base de datos
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("El correo no está registrado.");
-                    alert.showAndWait();
-                }
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-            }
-        });
+                
     }
 
     @FXML
