@@ -68,7 +68,6 @@ import javafx.scene.control.CheckBox;
  *
  * @author Jorge
  */
-
 public class HubController implements Initializable {
 
     @FXML
@@ -127,7 +126,7 @@ public class HubController implements Initializable {
     Argon2 argon2 = Argon2Factory.create();
 
     @FXML
-    public void mode(ActionEvent event) throws IOException {
+public void mode(ActionEvent event) throws IOException {
 
     if(admin.isSelected() == true){
     Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -220,9 +219,9 @@ public class HubController implements Initializable {
     }
 }
     
-    @FXML
-    public void create(ActionEvent event) throws IOException {
-   
+@FXML
+public void create(ActionEvent event) throws IOException {
+    
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ServiceFXML.fxml"));
                     Parent root = loader.load();
                     ServiceController serviceController = loader.getController();
@@ -238,7 +237,7 @@ public class HubController implements Initializable {
                     stage.setWidth(1280);
                     stage.setHeight(720);
                     stage.show();
-            
+           
 }
 
     @FXML
@@ -304,7 +303,7 @@ public class HubController implements Initializable {
     
     @FXML
     void seo(ActionEvent event) throws IOException {
-    
+     
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("EmailFXML.fxml"));
                         Parent root = loader.load();
                         EmailController emailController = loader.getController();
